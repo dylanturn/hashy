@@ -13,7 +13,7 @@ __kernel void load_database(__global const Word *word_list, __global long *hash_
     {
         __private int value;
         int R = 31; //Small Prime Number
-        int M = 2147483647; //Array Size
+        int M = 65535; //Array Size
 
         for(int i = 0; i < STRING_LENGTH; i++) {
             value = word_list[gid].text[i];
