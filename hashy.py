@@ -8,7 +8,7 @@ class GPU_Hash():
 
     def __init__(self):
         self.file_path = "example_data"
-        self.file_block_size = 10485760
+        self.file_block_size = 8192
 
         self.file_handler = file_handler.FileHandler(self.file_path, self.file_block_size)
         self.device = opencl_device.Device(block_size=self.file_block_size)
@@ -20,10 +20,12 @@ class GPU_Hash():
         host_hash_buffer = np.zeros(self.file_handler.set_size, dtype=np.long)
         device_hash_buffer = self.device.allocate_device_data_hash_memory(host_hash_buffer)
 
-        #for i in range(self.file_handler.file_block_count):
-        for i in range(4):
+        print("\nProcessing {} blocks...".format(self.file_handler.file_block_count))
+
+        for i in range(self.file_handler.file_block_count):
+        #for i in range(4):
             # Hash the list of file blocks
-            print("Process Block: {}".format(i))
+            # print("Process Block: {}".format(i))
             self.device.hash_data_block_set(
                 device_hash_set_pointer=device_hash_buffer,
                 data_block_set=self.file_handler.get_next_block_set(),

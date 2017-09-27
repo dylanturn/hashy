@@ -5,7 +5,7 @@ import numpy as np
 class Device:
 
     # Setup the device to run a hash job
-    def __init__(self, block_size, device_type=cl.device_type.CPU, device_index=0, platform_index=0):
+    def __init__(self, block_size, device_type=cl.device_type.GPU, device_index=1, platform_index=0):
         os.environ['PYOPENCL_COMPILER_OUTPUT'] = '1'
 
         self.mem_flags = cl.mem_flags
