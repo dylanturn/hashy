@@ -7,7 +7,7 @@ import opencl_device
 class GPU_Hash():
 
     def __init__(self):
-        self.file_path = "/Users/dylanturnbull/Documents/projects/hashy/example_data"
+        self.file_path = "example_data"
         self.file_block_size = 10485760
 
         self.file_handler = file_handler.FileHandler(self.file_path, self.file_block_size)
