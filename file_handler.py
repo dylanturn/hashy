@@ -12,7 +12,7 @@ class FileHandler:
         for file in files:
             new_file = File(file_path="{}/{}".format(file_path, file), block_size=file_block_size)
             file_set.append(new_file)
-            self.file_block_count = new_file.block_count
+            self.file_block_count = int(new_file.block_count)
 
         self.file_block_size = file_block_size
         self.set_size = len(file_set)

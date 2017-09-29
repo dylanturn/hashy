@@ -5,7 +5,7 @@ import time
 
 class OpenCL_Hash:
 
-    def __init__(self, file_path="example_data", file_block_size=10485760, device_class="GPU", device_index=0, platform_index=0):
+    def __init__(self, file_path="example_data", file_block_size=8192, device_class="GPU", device_index=0, platform_index=0):
 
         self.file_path = file_path
         self.file_block_size = file_block_size
