@@ -34,6 +34,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-p', type=float, help='Percent of file data blocks to sample (hash)')
 parser.add_argument('-b', type=int, help='File block size')
 parser.add_argument('-v', type=int, help='Prints the hash value of each file.')
+parser.add_argument('--path', help="The path of the folder to hash")
 parser.add_argument('--type', help="The type of hashing you want to perform.")
 parser.add_argument('--device_platform', type=int, help='Device Platform')
 parser.add_argument('--device_class', help='Device Class')
@@ -44,6 +45,11 @@ args = parser.parse_args()
 if args.list_devices:
     list_all_devices()
     exit()
+
+if args.path:
+    file_path = args.path
+else:
+    file_path = "example_data"
 
 if args.p:
     sample_pct = args.p
@@ -66,6 +72,6 @@ else:
     hash_type = "crc32"
 
 if hash_type == "crc32":
-    hashy_crc32.OpenCL_Hash(file_path="example_data", file_block_size=8192, device_class="GPU", device_index=0, platform_index=0).main()
+    hashy_crc32.OpenCL_Hash(file_path=file_path, file_block_size=block_size, device_class="GPU", device_index=0, platform_index=0).main()
 else:
     exit()
