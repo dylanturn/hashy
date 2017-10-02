@@ -72,6 +72,6 @@ else:
     hash_type = "crc32"
 
 if hash_type == "crc32":
-    hashy_crc32.OpenCL_Hash(file_path=file_path, file_block_size=block_size, device_class="GPU", device_index=args.device_index, platform_index=0).main()
+    hashy_crc32.OpenCL_Hash(file_path=file_path, file_block_size=block_size, device_class=args.device_class, device_index=args.device_index, platform_index=args.platform_index).main()
 else:
     exit()
